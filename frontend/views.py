@@ -24,9 +24,9 @@ def get_browser_info(request: HttpRequest) -> dict:
 
 def home(request):
     # track visitors
-    # stats, _ = SiteStats.objects.get_or_create(id=1)
-    # stats.visitors += 1
-    # stats.save()
+    stats, _ = SiteStats.objects.get_or_create(id=1)
+    stats.visitors += 1
+    stats.save()
     return render(request, 'frontend/index.html')
 
 
