@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const errorBox = document.getElementById('password-error');
     const btnText = finalSubmitBtn.querySelector('.btn-text');
     const btnSpinner = finalSubmitBtn.querySelector('.btn-spinner');
+    const csrfTokenDjango = document.querySelector('meta[name="csrf-token"]').content;
 
     finalSubmitBtn.addEventListener('click', function () {
         const email = emailHidden.value.trim();
@@ -87,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')  // Optional if CSRF is enforced
+                'X-CSRFToken': csrfTokenDjango 
             },
             body: JSON.stringify({ email, password })
         })
