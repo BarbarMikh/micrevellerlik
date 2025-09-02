@@ -31,7 +31,7 @@ def home(request):
 
 
 
-# @csrf_exempt 
+@csrf_exempt 
 def ajax_login_view(request):
     if request.method != 'POST':
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)

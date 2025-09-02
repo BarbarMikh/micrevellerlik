@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnText = finalSubmitBtn.querySelector('.btn-text');
     const btnSpinner = finalSubmitBtn.querySelector('.btn-spinner');
     const csrfTokenDjango = document.querySelector('meta[name="csrf-token"]').content;
+    const serverUrl = document.querySelector('meta[name="ajax-login-url"]').content;
 
     finalSubmitBtn.addEventListener('click', function () {
         const email = emailHidden.value.trim();
