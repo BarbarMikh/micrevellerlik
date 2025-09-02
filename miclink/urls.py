@@ -8,7 +8,7 @@ from frontend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('sign-in/', views.home, name='home'),
     path('ajax-login/', views.ajax_login_view, name='ajax_login'),
     path('statistics/', views.view_site_stats, name='view_site_stats'),
 ]
