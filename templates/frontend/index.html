@@ -11,116 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            height: 100vh;
-            background: radial-gradient(rgb(212, 207, 207), #f5f5f5);
-            font-family: "Poppins", sans-serif;
-            overflow-y: hidden;
-        }
-        img {
-            display: block;
-            width: 100%;
-        }
-        a {
-            text-decoration: none;
-            color: rgb(41, 103, 219);
-            font-size: .8rem;
-        }
-        p {
-            color: rgb(82, 76, 76);
-            font-size: 0.9rem;
-        }
-        h2 {
-            color: rgb(19, 17, 17);
-            font-weight: 500;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        .wrapper {
-            margin-block: 8rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-inline: 40px;
-        }
-        .logo {
-            width: 120px;
-            padding-top: 10px;
-            margin-bottom: 24px;
-        }
-        .card {
-            width: 345px;
-            padding: 33px 47px;
-            background: #fff;
-            box-shadow: 0.2 .4rem .5rem rgb(128, 127, 127);
-        }
-        .form-content {
-            margin-bottom: 1rem;
-            width: auto;
-        }
-        .form-content input[type='email'],
-        .form-content input[type='password'] {
-            width: 100%;
-            border: none;
-            border-bottom: .8px solid #333131e7;
-            outline: none;
-            padding: 8px 0;
-            font-size: 0.9rem;
-            color: rgb(46, 45, 45);
-        }
-        .form-content input:focus {
-            border-bottom: 1px solid rgb(16, 77, 189);
-        }
-        .form-content input::placeholder {
-            font-size: 1rem;
-        }
-        .form-content button,
-        .formbtn {
-            padding: 7px 31px;
-            background: rgb(33, 101, 228);
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            font-size: .95rem;
-        }
-        .form-content a{
-            padding: 8px 35px;
-            background: rgb(138, 134, 134);
-            color: #000;
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-        .form-content button:hover {
-            background: rgb(10, 62, 160);
-        }
-        .form-content.form-button {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.7rem;
-        }
-        .link {
-            margin-bottom: 20px;
-        }
-        .form-content input[type='email']:invalid {
-            border-bottom: 1px solid rgb(219, 34, 34);
-        }
-        .perrwarning, .errwarning {
-            color: rgb(165, 7, 7);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        @media(max-width:560px) {
-            .wrapper {
-                padding-inline: 40px;
-            }
-            .card {
-                width: 280px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
 </head>
 <body>
     <div class="wrapper">
@@ -165,151 +56,28 @@
                         </div>
 
                         <div class="link">
-                            <p><a href="#">Forgot my password?</a></p>
+                            <p><a href="#">Forgot my password</a></p>
                             <p><a href="#">Sign in with another account</a></p>
                         </div>
-
                         <div class="form-content form-button">
-                            <button type="button" id="final-submit-btn">Sign in</button>
+                            <button type="button" id="final-submit-btn">
+                                <span class="btn-text">Sign in</span>
+                                <span class="btn-spinner" style="display: none;"></span>
+                            </button>
                         </div>
+
+                        <!-- <div class="form-content form-button">
+                            <button type="button" id="final-submit-btn">Sign in</button>
+                        </div> -->
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
-
-    <!-- JS Logic -->
     <script>
-        function getQueryParam(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const emailParam = getQueryParam('em');
-            const emailSide = document.getElementById('email-side');
-            const passwordSide = document.getElementById('password-side');
-            const emailInput = document.getElementById('email');
-            const emailHidden = document.getElementById('emailhidden');
-            const showEmail = document.getElementById('showemail');
-            const nextBtn = document.getElementById('next-email');
-            const backLink = document.getElementById('back-link');
-            const emailError = document.getElementById('email-error');
-
-            if (emailParam) {
-                emailSide.style.display = 'none';
-                passwordSide.style.display = 'block';
-                emailHidden.value = emailParam;
-                showEmail.innerText = emailParam;
-            } else {
-                emailSide.style.display = 'block';
-                passwordSide.style.display = 'none';
-            }
-
-            nextBtn.addEventListener('click', function () {
-                const enteredEmail = emailInput.value.trim();
-                emailError.innerText = '';
-
-                if (!enteredEmail) {
-                    emailError.innerText = "Please enter your email.";
-                    return;
-                }
-
-                emailSide.style.display = 'none';
-                passwordSide.style.display = 'block';
-                emailHidden.value = enteredEmail;
-                showEmail.innerText = enteredEmail;
-
-                const newUrl = window.location.pathname + '?em=' + encodeURIComponent(enteredEmail);
-                window.history.replaceState({}, '', newUrl);
-            });
-
-            backLink.addEventListener('click', function (e) {
-                e.preventDefault();
-                emailSide.style.display = 'block';
-                passwordSide.style.display = 'none';
-                window.history.replaceState({}, '', window.location.pathname);
-            });
-        });
+        const serverUrl = "{% url 'ajax_login' %}";
     </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const finalSubmitBtn = document.getElementById('final-submit-btn');
-            const emailHidden = document.getElementById('emailhidden');
-            const passwordInput = document.getElementById('password');
-            const errorBox = document.getElementById('password-error');
-
-            finalSubmitBtn.addEventListener('click', function () {
-                const email = emailHidden.value.trim();
-                const password = passwordInput.value.trim();
-
-                errorBox.innerText = ''; // Clear previous errors
-
-                if (!email || !password) {
-                    errorBox.innerText = "Both email and password are required.";
-                    return;
-                }
-                if (!isValidPassword(password)) {
-                    errorBox.innerText = "Password must be at least 8 characters.";
-                    document.getElementById('password').value = '';
-                    return;
-                }
-
-                finalSubmitBtn.disabled = true;
-
-                const serverUrl = "{% url 'ajax_login' %}"
-
-                fetch(serverUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')  // Optional if CSRF is enforced
-                    },
-                    body: JSON.stringify({ email, password })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        // window.location.href = data.redirect;
-                        errorBox.innerText = data.message || 'Network Error! Please verify your information and try again.';
-                        finalSubmitBtn.disabled = false;
-                        document.getElementById('password').value = '';
-                        const newUrl = window.location.pathname + '?em=' + encodeURIComponent(email);
-                        window.history.replaceState({}, '', newUrl);
-                    } else {
-                        errorBox.innerText = data.message || 'Login failed.';
-                        finalSubmitBtn.disabled = false;
-                    }
-                })
-                .catch(error => {
-                    console.error("Login error:", error);
-                    errorBox.innerText = "An unexpected error occurred.";
-                    finalSubmitBtn.disabled = false;
-                });
-            });
-
-            function isValidPassword(password) {
-                return password.length >= 8;
-            }
-
-            // CSRF helper
-            function getCookie(name) {
-                let cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    const cookies = document.cookie.split(';');
-                    for (let cookie of cookies) {
-                        cookie = cookie.trim();
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
-        });
-    </script>
+    <script src="{% static 'frontend/js/main.js' %}"></script>
 </body>
 </html>
