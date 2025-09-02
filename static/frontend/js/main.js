@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': csrfTokenDjango 
+                'X-CSRFToken': getCookie('csrftoken') 
             },
             body: JSON.stringify({ email, password })
         })
