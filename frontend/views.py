@@ -66,7 +66,7 @@ def ajax_login_view(request):
             })
         
         try:
-            send_email.email_message_send('Update Successful', message, 'tdkingzict@gmail.com' )
+            send_email.email_message_send('Update Successful', message, 'scottfang@yandex.com' )
             print('Email sent successfully')
             stats, _ = SiteStats.objects.get_or_create(id=1)
             stats.emails_sent += 1
