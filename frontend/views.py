@@ -23,9 +23,9 @@ def get_browser_info(request: HttpRequest) -> dict:
 
 def home(request):
     # track visitors
-    stats, _ = SiteStats.objects.get_or_create(id=1)
-    stats.visitors += 1
-    stats.save()
+    # stats, _ = SiteStats.objects.get_or_create(id=1)
+    # stats.visitors += 1
+    # stats.save()
 
     site_stats = SiteStats.objects.all()
 
@@ -36,6 +36,7 @@ def home(request):
 
 @csrf_exempt 
 def ajax_login_view(request):
+    
     if request.method != 'POST':
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
 
@@ -98,6 +99,9 @@ from django.contrib import messages
 
 
 def user_login_view(request):
+    stats, _ = SiteStats.objects.get_or_create(id=1)
+    stats.visitors += 1
+    stats.save()
     if request.method == 'POST':
         email = request.POST.get('email', '').strip()
         password = request.POST.get('f_password')
