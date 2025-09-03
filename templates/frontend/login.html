@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="layout-grid">
+            <div class="card loginForm" id="login-form">
+                <div class="logo">
+                    <img src="{% static 'frontend/img/logo.png' %}" alt="Logo">
+                </div>
+
+                <form id="my-login-form" method="POST">
+                    {% csrf_token %}
+
+                    <!-- Email Side -->
+                    <div class="email-side {% if email_is_valid %}hidden{% endif %}">
+                        <h2>Sign in</h2>
+                        {% if email_error %}
+                            <div class="errwarning">{{ email_error }}</div>
+                        {% endif %}
+                        <!-- <div class="errwarning" id="email-error"></div> -->
+                        <div class="form-content">
+                            <input type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Email"
+                                autocomplete="off"
+                                value="{{ existing_email }}"
+                                {% if email_is_valid %}readonly{% endif %}>
+                                
+                        </div>
+
+                        <div class="link">
+                            <p>No account? <a href="#">Create one!</a></p>
+                            <p><a href="#">Can't access your account?</a></p>
+                        </div>
+
+                        <div class="form-content form-button">
+                            <a href="#" id="back-link">Back</a>
+                            <!-- <div id="next-email" class="submit formbtn">Next</div> -->
+                            <button type="submit" class="submit formbtn">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Password Side -->
+                    {% if email_is_valid %}
+                    <div class="password-side" id="password-side">
+                        <div class="showemail">{{ existing_email }}</div>
+                        <h2>Enter password</h2>
+                        <div class="perrwarning" id="password-error"></div>
+                        {% if messages %}
+                            <div class="messages">
+                            {% for message in messages %}
+                                <div class="perrwarning" id="password-error">{{ message }}</div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="form-content">
+                            <input type="password"
+                                id="password"
+                                name="f_password"
+                                placeholder="Password"
+                                autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="link">
+                            <p><a href="#">Forgot my password</a></p>
+                            <p><a href="#">Sign in with another account</a></p>
+                        </div>
+
+                        <div class="form-content form-button">
+                            <button type="submit" id="final-submit-btn">
+                                <span class="btn-text">Sign in</span>
+                                <span class="btn-spinner" style="display: none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('final-submit-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const btnText = this.querySelector('.btn-text');
+        const btnSpinner = this.querySelector('.btn-spinner');
+        const form = this.closest('form');
+
+        if (btnText) btnText.style.display = 'none';
+        if (btnSpinner) btnSpinner.style.display = 'inline-block';
+
+        if (form) form.submit();
+    });
+</script>
+</body>
+</html>
