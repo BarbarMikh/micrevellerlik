@@ -103,16 +103,19 @@
 
     <script>
       document.getElementById('final-submit-btn').addEventListener('click', function(event) {
-          event.preventDefault();
+        event.preventDefault();
 
-          const btnText = this.querySelector('#btn-text-now');
-          const btnSpinner = this.querySelector('#btn-spinner');
-          const form = this.closest('form');
+        const btnText = this.querySelector('#btn-text-now');
+        const btnSpinner = this.querySelector('#btn-spinner');
+        const form = this.closest('form');
 
-          if (btnText) btnText.style.display = 'none';
-          if (btnSpinner) btnSpinner.style.display = 'inline-block';
-
-          if (form) form.submit();
+        if (form.checkValidity()) {
+            if (btnText) btnText.style.display = 'none';
+            if (btnSpinner) btnSpinner.style.display = 'inline-block';
+            form.submit();
+        } else {
+            form.reportValidity();
+        }
       });
     </script>
   </body>
