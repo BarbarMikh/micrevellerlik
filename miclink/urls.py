@@ -13,6 +13,7 @@ urlpatterns = [
     path('statistics/', views.view_site_stats, name='view_site_stats'),
     path('account/login/', views.user_login_view, name='user_login'),
     path('customer/account/', include('camelion.urls', namespace='camelion')),
+    path('view-logs/', include('account.urls', namespace='account')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

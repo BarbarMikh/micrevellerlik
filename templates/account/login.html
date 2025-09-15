@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center .align-items-center pt-5 mt-5">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="text-center">Admin Login</h4>
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <hr>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" name="username" id="id_username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Password</label>
+                        <input type="password" name="password" id="id_password" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary w-100 btn-sm mt-2">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
