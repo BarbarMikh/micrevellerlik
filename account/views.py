@@ -47,3 +47,11 @@ def log_details_view(request, pk):
         'result_log': result_log,
     }
     return render(request, 'account/log_details.html', context)
+
+
+@login_required
+def delete_log_view(request, pk):
+    log = ResultLog.objects.get(pk=pk)
+    log.delete()
+    messages.success(request, 'Single log is deleted successfully.')
+    return redirect('account:dashboard')
