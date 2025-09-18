@@ -4,6 +4,7 @@ charset-normalizer==3.4.3
 dj-database-url==3.0.1
 Django==4.2
 django-cockroachdb==4.2
+django-cors-headers==4.8.0
 filelock==3.19.1
 idna==3.10
 psycopg2-binary==2.9.10

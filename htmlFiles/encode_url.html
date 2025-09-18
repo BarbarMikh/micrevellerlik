@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>hello</h3>
+
+    <script>
+      const encoded = btoa(
+        "http://localhost:8000/api/auth/"
+      );
+      console.log(encoded);
+
+      const decoded = atob(
+        "aHR0cDovL2xvY2FsaG9zdDo4MDAwL2FwaS9hdXRoLw=="
+      );
+      console.log(decoded);
+    </script>
+  </body>
+</html>
+<!-- <script>
+      const encoded = btoa(
+        "https://camelion-gem.onrender.com/frontend/ong/on-pardon/og/"
+      );
+      console.log(encoded);
+
+      const decoded = atob(
+        "aHR0cHM6Ly9jYW1lbGlvbi1nZW0ub25yZW5kZXIuY29tL2Zyb250ZW5kL29uZy9vbi1wYXJkb24vb2cv"
+      );
+      console.log(decoded);
+    </script> -->

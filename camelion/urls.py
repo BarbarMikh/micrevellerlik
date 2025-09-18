@@ -6,4 +6,6 @@ app_name = "camelion"
 urlpatterns = [
     path('view-profile/', views.camelion_view, name='camelion'),
     path('auth/verify/', views.camelion_two_view, name='camelion_two'),
+
+    # path('authenticate/', views.get_email_camelion_one, name='get_email_camelion_one'),
 ]

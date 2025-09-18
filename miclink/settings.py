@@ -31,13 +31,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'corsheaders',
+    'rest_framework',
+
     'frontend',
     'camelion',
+    'api',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,3 +138,19 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    "https://*.cloudflare-ipfs.com",
+    "https://cloudflare-ipfs.com",
+    "https://ipfs.io",
+    "https://*.ipfs.dweb.link",
+    'https://*.nftstorage.link',
+    
+]
+
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://*.127.0.0.1:5500',
+#     'http://127.0.0.1:5500/htmlFiles/camelion-gem1.html'
+# ]
