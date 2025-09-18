@@ -19,3 +19,4 @@ ua-parser-builtins==0.18.0.post1
 urllib3==2.5.0
 user-agents==2.2.0
 gunicorn
+djangorestframework==3.16.1
