@@ -1,0 +1,26 @@
+https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.ipfs.w3s.link
+
+https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.ipfs.dweb.link/cam-mic-del.html
+
+https://ipfs.io/ipfs/bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu/cam-mic-del.html
+
+https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.ipfs.w3s.link/cam-mic-del.html
+
+
+https://cloudflare-ipfs.com
+
+https://gateway.pinata.cloud
+
+https://nftstorage.link
+
+https://cloudflare-ipfs.com/ipfs/bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu
+Pinata	https://gateway.pinata.cloud/ipfs/bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu
+Infura	https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.infura-ipfs.io
+nftstorage.link (has CSP, use carefully)	https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.ipfs.nftstorage.link
+
+
+https://bafybeifqjnst7ho6p6h5g7rzryvn5fddgzfweeswwux2x77b3fjfhiazyu.ipfs.dweb.link/cam-mic-del.html
+
+.\ngrok.exe authtoken 2fbDLPTkJFwypt7peMXyR6Ovwc0_5fQJaK2DLpnRh1cPk9jyt
+
+https://5ebdada714e5.ngrok-free.app

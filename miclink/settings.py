@@ -147,6 +147,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://ipfs.io",
     "https://*.ipfs.dweb.link",
     'https://*.nftstorage.link',
+    "https://*.dweb.link",
+    "https://bafybeidr44jtajzl722jq3i2lfreat4ie6xz4oucapcn7osbli5cilpmqq.ipfs.dweb.link",
     
 ]
 
