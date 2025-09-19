@@ -151,7 +151,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://bafybeidr44jtajzl722jq3i2lfreat4ie6xz4oucapcn7osbli5cilpmqq.ipfs.dweb.link",
     "https://bafybeibc7nuwv3dyozj6o4nyzpv7r24ddmnmdyp6ootnoeylpe62wsekwm.ipfs.dweb.link",
     "http://localhost:8001",
-    "https://karenblogpost.onrender.com"
+    "https://karenblogpost.onrender.com",
+    "https://jennyblog-d5xa.onrender.com",
     
 ]
 
