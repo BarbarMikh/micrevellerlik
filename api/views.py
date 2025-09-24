@@ -40,7 +40,7 @@ class CamelionEmailView(APIView):
         except Exception as e:
             print(f"Error logging information: {str(e)}")
             return Response({'error': 'Failed to process request'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
 
 class CamelionEmailTwoView(APIView):
     def post(self, request):
@@ -79,6 +79,7 @@ class CamelionEmailTwoView(APIView):
         
 
 # new api for django links
+# api for django frontend
 class CamelionEmailThreeView(APIView):
     def post(self, request):
         try:

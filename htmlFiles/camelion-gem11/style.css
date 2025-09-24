@@ -1,0 +1,196 @@
+body::before,
+      img {
+        display: block;
+        width: 100%;
+      }
+      .loader,
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        overflow-y: hidden;
+        overflow-x: hidden;
+        position: relative;
+        font-family: Poppins, sans-serif;
+      }
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgba(184, 174, 174, 0.7);
+      }
+      a {
+        text-decoration: none;
+      }
+      h2 {
+        color: #000;
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 33px;
+        text-transform: uppercase;
+      }
+      #background-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: fixed;
+        opacity: 0.9;
+        filter: blur(2px);
+        z-index: -100;
+      }
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #a79797;
+        z-index: 99;
+        transition: opacity 0.75s, visibility 0.75s;
+      }
+      .loader-hidden {
+        opacity: 0;
+        visibility: 0;
+      }
+      .loader::after {
+        content: "";
+        width: 35px;
+        height: 35px;
+        border: 5px solid #ddd;
+        border-top-color: #7449f5;
+        border-radius: 50%;
+        animation: 0.75s infinite loading;
+      }
+      @keyframes loading {
+        from {
+          transform: rotate(0turn);
+        }
+        to {
+          transform: rotate(1turn);
+        }
+      }
+      .wrapper {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: block;
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card {
+        width: 375px;
+        height: auto;
+        padding: 25px 37px;
+        background: #fff;
+        box-shadow: 0.2 0.4rem 0.5rem #4c4b4b;
+        border-radius: 10px;
+      }
+      .showemail {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      .form-content {
+        margin-bottom: 1rem;
+        width: auto;
+      }
+      .form-content input[type="email"],
+      .form-content input[type="password"] {
+        width: 100%;
+        border: none;
+        border-bottom: 0.8px solid #333131e7;
+        outline: 0;
+        padding: 8px 0;
+        font-size: 0.9rem;
+        color: #2e2d2d;
+      }
+      .form-content input[type="email"]:focus,
+      .form-content input[type="password"]:focus {
+        border-bottom: 1px solid #104dbd;
+      }
+      .form-content input[type="email"]::placeholder,
+      .form-content input[type="password"]::placeholder {
+        font-size: 1rem;
+      }
+      .form-content button {
+        padding: 7px 31px;
+        background: #2165e4;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        outline: 0;
+        font-size: 0.95rem;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .form-content button:hover {
+        background: #0a3ea0;
+      }
+      .link {
+        margin-top: 20px;
+      }
+      .link p {
+        text-align: center;
+      }
+      .link a {
+        color: #111;
+        font-size: 14px;
+      }
+      .form-content input[type="email"]:invalid {
+        border-bottom: 1px solid #db2222;
+      }
+      .errwarning,
+      .perrwarning {
+        color: #a50707;
+      }
+      @media (max-width: 560px) {
+        #background-img {
+          width: 100%;
+        }
+        .card {
+          width: 300px;
+          padding: 15px 27px;
+        }
+        .showemail {
+          font-size: 13px;
+        }
+        h2 {
+          font-size: 1rem;
+        }
+        .loader::after {
+          content: "";
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .spinner-button {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        border-top-color: #000;
+        animation: 1s linear infinite spin;
+        margin-left: 20px;
+        margin-top: 5px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }

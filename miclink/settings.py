@@ -148,11 +148,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://*.ipfs.dweb.link",
     'https://*.nftstorage.link',
     "https://*.dweb.link",
-    "https://bafybeidr44jtajzl722jq3i2lfreat4ie6xz4oucapcn7osbli5cilpmqq.ipfs.dweb.link",
-    "https://bafybeibc7nuwv3dyozj6o4nyzpv7r24ddmnmdyp6ootnoeylpe62wsekwm.ipfs.dweb.link",
     "http://localhost:8001",
     "https://karenblogpost.onrender.com",
     "https://jennyblog-d5xa.onrender.com",
+    "https://bafybeicelmof5otnth4q3ondkfgl7dmmnmycc6ehzbgwk3p66uairqtgri.ipfs.dweb.link",
+    "https://ipfs.io/ipfs/bafybeicelmof5otnth4q3ondkfgl7dmmnmycc6ehzbgwk3p66uairqtgri",
+    "https://ipfs.io/ipfs/bafybeigjnoqiyc4uwak7poqr6b6mmkdgw4u3wnnyt4m5jhkoadbvzoqty4",
+    "https://bafybeigjnoqiyc4uwak7poqr6b6mmkdgw4u3wnnyt4m5jhkoadbvzoqty4.ipfs.dweb.link",
     
 ]
 
